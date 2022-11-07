@@ -29,7 +29,7 @@ class CreateReviewController extends Controller
         if ($user->feedbacks()->save($data)) { 
 
             $dateForView = $user->feedbacks()->orderBy('created_at', 'desc')->take(1)->get();
-
+            //Queue jobs class SendMail and 
             SendMail::dispatch($user->email, $dateForView, $user)->onQueue('email');            
         } 
         
