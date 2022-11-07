@@ -25,7 +25,7 @@
         </style>
     </head>
     <body>
-        <div class="container-fluid">          
+        <div class="container">          
             
             <div class="d-flex justify-content-end">
                 @if (Route::has('login'))
@@ -46,7 +46,7 @@
                 <h3>Книга отзывов</h3>
             </div>
             
-            <div class="mx-4 pt-4 position-absolute top-50 start-50 translate-middle">              
+            <div class="mx-4 pt-4">              
 
                 @foreach ($feedbacks as $feedback)
                     <div class="card text-white bg-secondary mb-3" style="max-width: 70rem;">
@@ -63,7 +63,7 @@
             </div>          
             
         </div>
-        <div class="position-absolute top-100 start-50 translate-middle" style="position: absolute; bottom: 0; padding-bottom: 50px">
+        <div class="d-flex justify-content-center pt-5" style="bottom: 0; padding-bottom: 50px; margin-left: auto; margin-right: auto;">
             {!! $feedbacks->links() !!}
         </div>
         
