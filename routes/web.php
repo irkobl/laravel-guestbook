@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CreateReviewController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,7 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [IndexController::class, 'feedback'])->name('welcome');
 
 Route::get('/dashboard', [DashboardController::class, 'show'])
     ->middleware(['auth', 'verified'])->name('dashboard');
