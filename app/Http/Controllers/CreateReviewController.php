@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendMail;
 use App\Mail\MailFeedback;
 use App\Models\Feedback;
 use App\Models\User;
@@ -29,9 +30,9 @@ class CreateReviewController extends Controller
 
             $dateForView = $user->feedbacks()->orderBy('created_at', 'desc')->take(1)->get();
 
-            Mail::to($user->email)->send(new MailFeedback($dateForView, $user));
-
-            return redirect()->route('dashboard');
-        }     
+            SendMail::dispatch($user->email, $dateForView, $user)->onQueue('email');            
+        } 
+        
+        return redirect()->route('dashboard');
     }
 }
