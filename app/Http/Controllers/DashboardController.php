@@ -8,9 +8,10 @@ use App\Models\User;
 class DashboardController extends Controller
 {
     public function show (Request $request) { 
-        $user = User::find($request->user()->id);        
+        $user = User::find($request->user()->id);
+        $feedback = $user->feedbacks()->orderBy('created_at', 'desc');               
         return view('dashboard', 
-            ['dates' => $user->feedbacks()->paginate(3)]
+            ['dates' => $feedback->paginate(3)]
         );
     }
 }

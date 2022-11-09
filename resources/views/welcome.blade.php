@@ -56,7 +56,18 @@
                             <p class="card-text">{{ $feedback->feedback }}</p>
                         </div>
                         <div class="card-footer d-flex justify-content-between">
-                        <div>Рейтинг: {{ $feedback->raiting }}</div> <div>Пользователь: {{ $feedback->user->name }}</div></div>
+                            <div> 
+                                @for ($i = 0; $i < $feedback->raiting; $i++)
+                                    &#9733;
+                                @endfor
+                                @for ($i = 0; $i < (5 - $feedback->raiting); $i++)
+                                    &#9734; 
+                                @endfor
+                            </div>
+                            <div>
+                                Пользователь: {{ $feedback->user->name }}
+                            </div>
+                        </div>                        
                     </div>
                 @endforeach
                 

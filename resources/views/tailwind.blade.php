@@ -22,9 +22,9 @@
             @endif
         </div>
 
-        <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-            <div>
-                <p class="text-sm text-gray-700 leading-5">
+        <div class="hidden sm:justify-center sm:flex-1 sm:flex sm:items-center" style="margin-bottom: 20px">
+            <div style="display: none;">
+                <p class="text-sm text-gray-700 leading-5" style="margin-right: 10px;">
                     {!! __('Showing') !!}
                     @if ($paginator->firstItem())
                         <span class="font-medium">{{ $paginator->firstItem() }}</span>
